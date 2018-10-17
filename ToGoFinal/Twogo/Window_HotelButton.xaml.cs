@@ -48,6 +48,7 @@ namespace ToGo
             set
             {
                 this.Lable_Price.Content = value;
+                this.sendtoroommenu.Tag = this.Lable_Price.Content;
             }
         }
 
@@ -93,7 +94,8 @@ namespace ToGo
             {
                 tempHotelID = item;
             }
-
+            RoomMenu.minpricetoroompage = ((Button)sender).Tag;
+            
             RoomMenu roomMenu = new RoomMenu(tempHotelID, MainWindow._SearchSDate, MainWindow._SearchEDate, MainWindow._RoomType.ToString());
             roomMenu.Show();
         }

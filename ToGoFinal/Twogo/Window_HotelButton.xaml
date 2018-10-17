@@ -32,7 +32,7 @@
                 <Label Content="每晚最低" Grid.Column="1" HorizontalAlignment="Left" Margin="126,248,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#FF181819"/>
                 <Label Name="Lable_Price" Content="3200" Grid.Column="1" HorizontalAlignment="Left" Margin="97,273,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
                 <Label Content="/晚" HorizontalAlignment="Left" Margin="157,273,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" FontWeight="Bold"/>
-                <Button Content="" Grid.ColumnSpan="2" Opacity="0" Click="Button_Click"/>
+                <Button Name="sendtoroommenu" Content="" Grid.ColumnSpan="2" Opacity="0" Click="Button_Click"/>
                 <Button x:Name="Btn_Map" Content="查看地圖" BorderThickness="0" HorizontalAlignment="Left" Margin="601,87,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Foreground="#FF2C23EA" FontSize="16" Height="22" Click="Btn_Map_Click"/>
 
             </Grid>
