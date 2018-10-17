@@ -40,6 +40,8 @@ namespace ToGo
         private DateTime SDate;
         private DateTime EDate;
         private string text;
+        public static object minpricetoroompage;
+
 
         //宣告一個靜態變數 用來存HotelID 以便下訂單時能夠使用
         public static int _HotelID;
@@ -145,6 +147,10 @@ namespace ToGo
                     rp2.Margin = marginnuber;
                     rp2.RoomName.Content = n.RoomNameCN;
                     rp2.RoomUnitPrice.Content = $"{n.UnitPrice:c0}";
+                    if (minpricetoroompage.ToString() == n.UnitPrice.ToString())
+                    {
+                        rp2.Minprice.Content = "最低價房間";                        
+                    }
                     rp2.RoomUnitPrice.Tag = n.UnitPrice;                     //暫存UnitPrice
                     rp2.HotelNameRoomPage.Tag = n.HotelNameCN;               //暫存HotelNameCN     
                     rp2.RoomNameRoomPage.Tag = n.RoomNameCN;                 //暫存RoomNameCN 丟給RoomInformationDetail
