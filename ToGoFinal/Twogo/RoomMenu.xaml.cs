@@ -55,6 +55,7 @@ namespace ToGo
         }
 
         int HotelIdNumber;
+        int SelectCount=0;
         public RoomMenu(object tag, DateTime SDatefromHotel, DateTime EDatefromHotel, string People) : this(tag)
         {
             this.SDate = SDatefromHotel;       //存從Hotel頁面丟過來的時間
@@ -171,10 +172,12 @@ namespace ToGo
 
                     this.StackOfRoom.Children.Add(rp2);
                     Roommarginnuber.Top = 5;
+                    SelectCount += 1;
                 }
 
             }
             rb1.IsChecked = true;
+            this.selectcount.Content = SelectCount + " 種 ";
         }
 
         private void newlabel(ref RoomPage2 rp2, string option)

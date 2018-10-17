@@ -37,7 +37,8 @@
             <Label Content="選擇客房" HorizontalAlignment="Left" Margin="33,1256,0,0" VerticalAlignment="Top" FontSize="24"/>
             <Label Content="我們為您搜出了" HorizontalAlignment="Left" Margin="33,1319,0,0" VerticalAlignment="Top" FontSize="22"/>
             <Label Content="" HorizontalAlignment="Left" Margin="200,1319,0,0" VerticalAlignment="Top" FontSize="22"/>
-            <Label Content="優質客房！" HorizontalAlignment="Left" Margin="202,1319,0,0" VerticalAlignment="Top" FontSize="22"/>
+            <Label Name="selectcount" Foreground="Red"  Content="4" HorizontalAlignment="Left" Margin="238,1306,0,0" VerticalAlignment="Top" FontSize="32" Background="White"/>
+            <Label Content="優質客房！" HorizontalAlignment="Left" Margin="308,1319,0,0" VerticalAlignment="Top" FontSize="22"/>
             <local:HotelSandF x:Name="HSFusercontrol" HorizontalAlignment="Left" Height="308" Margin="516,2364,0,0" VerticalAlignment="Top" Width="801"/>
             <Expander FontSize="20"  Header="服務與設施" HorizontalAlignment="Left" Height="244" Margin="200,2428,0,0" VerticalAlignment="Top" Width="251" IsExpanded="True">
                 <StackPanel  >
