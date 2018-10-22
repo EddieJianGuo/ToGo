@@ -67,15 +67,8 @@ namespace ToGo
         #region Owner新增 修改 刪除
         private void Button_Click(object sender, RoutedEventArgs e) //Add Hotel
         {
-            //var q = from h in dbContext.Hotels
-            //        where h.OwnerID ==10
-            //        select h;
-            //this.hotelDataGrid.DataContext = q.ToList();
-            //this.dbContext.Hotels.Local.Add(new ToGoDB.Hotel { CountryID = countryID, HotelNameEN = "" });
-            //先彈出對話框，確認ok再新增資料到DB
             Window AH = new Add_Hotel();
             AH.Show();
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) //Update Hotel 更新飯店資料
@@ -101,7 +94,8 @@ namespace ToGo
         //RoomInf Management
         private void Button_Click_4(object sender, RoutedEventArgs e) //Add Room
         {
-            this.dbContext.RoomInformations.Local.Add(new ToGo.RoomInformation { RoomNameCN="aaa"});
+            Window AR = new Add_Room();
+            AR.Show();
         }
         private void Button_Click_5(object sender, RoutedEventArgs e) //Update Room 更新房型資料
         {
@@ -120,6 +114,7 @@ namespace ToGo
         }
         #endregion
 
+        #region TabControl Page3 Order管理
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             //cd1.BlackoutDates.First().Start = datePicker1.SelectedDate??DateTime.Now;
@@ -231,6 +226,7 @@ namespace ToGo
                 cd1.DisplayDate = DateTime.Parse(StartDate);
             }
         }
+        #endregion
 
         #region 新增飯店和房型的服務和設施視窗
         private void Button_Click_8(object sender, RoutedEventArgs e) 

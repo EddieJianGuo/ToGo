@@ -1,0 +1,114 @@
+﻿<Window x:Class="ToGo.Add_Room"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToGo"
+        mc:Ignorable="d"
+        Title="Add_Room" Height="589.5" Width="888.5" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="roomInformationViewSource" d:DesignSource="{d:DesignInstance {x:Type local:RoomInformation}, CreateList=True}"/>
+        <LinearGradientBrush x:Key="brush1" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.3" Color="#FF31E7F9"/>
+            <GradientStop Offset="0.4" Color="#FF99EFF7"/>
+            <GradientStop Offset="1" Color="White"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource roomInformationViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="43*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="371*"/>
+        </Grid.RowDefinitions>
+        <Label Content="加入一筆 Room資料" HorizontalAlignment="Left" Height="37" Margin="26,8,0,0" VerticalAlignment="Top" Width="207" FontSize="18" FontFamily="Arial Black" Foreground="#FF229E93"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource roomInformationViewSource}" HorizontalAlignment="Left" Margin="26,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="354" Width="310">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Can Add Bed:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="canAddBedCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{DynamicResource {x:Static SystemParameters.CursorShadowKey}}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Room Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Hotel ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Offer Breakfast:" Grid.Column="0" Margin="3,4,36,4" Grid.Row="3" VerticalAlignment="Center"/>
+            <CheckBox x:Name="offerBreakfastCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{DynamicResource {x:Static SystemParameters.CursorShadowKey}}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Permit Smoking:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <CheckBox x:Name="permitSmokingCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{DynamicResource {x:Static SystemParameters.CursorShadowKey}}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="Register Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label x:Name="registerDateLabel" Content="{Binding RegisterDate}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,6,-27,4" Grid.Row="5" VerticalAlignment="Center" Height="24" Width="153"/>
+            <Label Content="Room ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label x:Name="roomIDLabel" Content="{Binding RoomID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="Room Name CN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+            <TextBox x:Name="roomNameCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding RoomNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Room Name EN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+            <TextBox x:Name="roomNameENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding RoomNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Room Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+            <Label Content="Price per night (NT$):" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
+            <TextBox x:Name="unitPriceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding UnitPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <ComboBox x:Name="hotelIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" SelectionChanged="hotelIDComboBox_SelectionChanged"/>
+            <ComboBox x:Name="roomTypeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="4,5,0,0" Grid.Row="9" VerticalAlignment="Top" Width="119"/>
+        </Grid>
+        <DataGrid x:Name="roomInformationDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="12,26,10,269" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn x:Name="canAddBedColumn" Binding="{Binding CanAddBed}" Header="Can Add Bed" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="hotelIDColumn" Header="Hotel ID" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox>
+                                <ComboBoxItem Content="{Binding HotelID}"/>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn x:Name="offerBreakfastColumn" Binding="{Binding OfferBreakfast}" Header="Offer Breakfast" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="permitSmokingColumn" Binding="{Binding PermitSmoking}" Header="Permit Smoking" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="registerDateColumn" Header="Register Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding RegisterDate}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="roomIDColumn" Header="Room ID" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding RoomID}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="roomNameCNColumn" Binding="{Binding RoomNameCN}" Header="Room Name CN" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="roomNameENColumn" Binding="{Binding RoomNameEN}" Header="Room Name EN" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="roomTypeColumn" Header="Room Type" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox>
+                                <ComboBoxItem Content="{Binding RoomType}"/>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="unitPriceColumn" Binding="{Binding UnitPrice}" Header="Unit Price" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button BorderThickness="3" Background="{StaticResource brush1}" Content="確定加入房型" Margin="26,418,226,47" RenderTransformOrigin="4.028,0.316" Click="Button_Click" Grid.Row="1"  />
+
+    </Grid>
+</Window>
