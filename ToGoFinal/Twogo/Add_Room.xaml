@@ -65,7 +65,7 @@
             <ComboBox x:Name="hotelIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" SelectionChanged="hotelIDComboBox_SelectionChanged"/>
             <ComboBox x:Name="roomTypeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="4,5,0,0" Grid.Row="9" VerticalAlignment="Top" Width="119"/>
         </Grid>
-        <DataGrid x:Name="roomInformationDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,10,262" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="roomDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,10,262" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn x:Name="canAddBedColumn" Binding="{Binding CanAddBed}" Header="Can Add Bed" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>

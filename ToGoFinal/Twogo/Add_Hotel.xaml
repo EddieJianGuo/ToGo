@@ -25,7 +25,7 @@
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
         <Label Content="加入一筆 Hotel資料" HorizontalAlignment="Left" Height="37" Margin="26,8,0,0" VerticalAlignment="Top" Width="207" FontSize="18" FontFamily="Arial Black" Foreground="#FF229E93"/>
-        <Button BorderThickness="3" Background="{StaticResource brush1}" Content="確定加入資料" Margin="26,541,343,43" RenderTransformOrigin="4.028,0.316" Click="Button_Click" Grid.Row="1"  />
+        <Button BorderThickness="3" Background="{StaticResource brush1}" Content="確定加入資料" Margin="26,522,343,43" RenderTransformOrigin="4.028,0.316" Click="Button_Click" Grid.Row="1"  />
         <DataGrid x:Name="hotelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,83,10,324" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="addressCHColumn" Binding="{Binding AddressCH}" Header="Address CH" Width="SizeToHeader"/>
@@ -70,7 +70,7 @@
             </Grid.RowDefinitions>
             <Label Content="Chinese Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="0" VerticalAlignment="Center" Height="24" Width="106"/>
             <TextBox x:Name="adrCHTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-107,7" Grid.Row="0" Text="{Binding AddressCH, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
-            <Label Content="English Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="102"/>
+            <Label Content="English Address: *" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="111"/>
             <TextBox x:Name="adrENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,-106,4" Grid.Row="1" Text="{Binding AddressEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
             <Label Content="Hotel Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="2" VerticalAlignment="Center" Height="24" Width="111"/>
             <TextBox x:Name="desTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-105,7" Grid.Row="2" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
@@ -78,7 +78,7 @@
             <Label x:Name="hotelIDLabel" Content="{Binding HotelID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="3" VerticalAlignment="Center" Height="24" Width="76"/>
             <Label Content="Hotel ChineseName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="4" VerticalAlignment="Center" Height="24" Width="131"/>
             <TextBox x:Name="hnCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-104,7" Grid.Row="4" Text="{Binding HotelNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
-            <Label Content="Hotel EnglishName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="5" VerticalAlignment="Center" Height="24" Width="131"/>
+            <Label Content="Hotel EnglishName: *" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="5" VerticalAlignment="Center" Height="24" Width="131"/>
             <TextBox x:Name="hnENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,-103,4" Grid.Row="5" Text="{Binding HotelNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
             <Label Content="Owner ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="6" VerticalAlignment="Center" Height="24" Width="66"/>
             <Label x:Name="ownerIDLabel" Content="{Binding OwnerID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,7" Grid.Row="6" VerticalAlignment="Center" Height="21" Width="76"/>

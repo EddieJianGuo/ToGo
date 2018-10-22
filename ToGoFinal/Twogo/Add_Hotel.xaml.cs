@@ -40,10 +40,8 @@ namespace ToGo
             {
                 this.countryENComboBox.Items.Add(q[i]);
             }
-
         }
-        int countryno = 0;
-        int cityno =0;
+
         private void Button_Click(object sender, RoutedEventArgs e) //新增一筆hotel
         {
             //Owner輸入資料後, 確定加入資料庫
@@ -62,7 +60,7 @@ namespace ToGo
 
             string StarRate = starTextBox.Text;
             int rate;
-            if(int.TryParse(StarRate,out rate)==false)
+            if(int.TryParse(StarRate,out rate)==false && rate<1 && rate>5)
             {
                 MessageBox.Show("請輸入1~5的數字");
                 return;
@@ -91,37 +89,29 @@ namespace ToGo
 
             });
 
+            this.rgDateLabel.Content = DateTime.Now;
             this.dbContext.SaveChanges();
 
-            this.rgDateLabel.Content = DateTime.Now;
-            //this.hotelDataGrid
+            MessageBox.Show("成功加入一筆hotel資料");
         }
 
         string countryName = "";
         string cityName = "";
-        //int ctryID=0;
+        int countryno = 0;
+        int cityno = 0;
 
         private void countryENComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var country = countryENComboBox.SelectedValue as Country;
-            //countryID = country.CountryID;
-            //this.countryENComboBox.Items.Clear();
-            //this.cityENComboBox.Items.Clear();
+            this.cityENComboBox.Items.Clear();
             countryName = this.countryENComboBox.SelectedValue.ToString();
-
-            //var q = dbContext.Countries.Where(c => c.CountryENName == ctryname).Select(ci => ci.CountryID).ToList();
-            //for(int i=0; i<q.Count;i++)
-            //{
-            //    ctryID = q[i];
-            //}
-            var q = dbContext.Countries.Where(c => c.CountryENName == countryName).Select(co => co.CountryID).ToList();
-            foreach(var item in q)
+            var q = dbContext.Countries.Where(c => c.CountryENName == countryName).Select(co => co.CountryID);
+            foreach (var item in q)
             {
                 countryno = item;
             }
 
             var q1 = dbContext.Cities.Where(ci => ci.CountryID == countryno).Select(ci => ci.CityENName);
-            foreach(var item in q1)
+            foreach (var item in q1)
             {
                 this.cityENComboBox.Items.Add(item);
             }
@@ -129,13 +119,16 @@ namespace ToGo
 
         private void cityENComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //this.cityENComboBox.Items.Clear();
-            cityName = this.cityENComboBox.SelectedValue.ToString();
-            var q3 = dbContext.Cities.Where(ci => ci.CityENName == cityName).Select(ci => ci.CityID).ToList();
-            foreach(var item in q3)
+            if (cityENComboBox.SelectedValue != null)
+            {
+                cityName = this.cityENComboBox.SelectedValue.ToString();
+            }
+            var q2 = dbContext.Cities.Where(ci => ci.CityENName == cityName).Select(ci => ci.CityID);
+            foreach (var item in q2)
             {
                 cityno = item;
             }
         }
+
     }
 }

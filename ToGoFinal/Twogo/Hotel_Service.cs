@@ -12,20 +12,28 @@ namespace ToGo
 {
     public partial class Hotel_Service : Form
     {
-        public Hotel_Service()
+        public Hotel_Service(int _hotelID )
         {
             InitializeComponent();
+
+
+            var q = dbContext2.HotelServiceAndFacilities.Where(x => x.HotelID == _hotelID).Select(x => x.ServiceAndFacility.ServiceFacilityCHName);
+            foreach (var item in q)
+            {
+                ServiceAndFacilitiesCn.Add(item);
+            }
         }
+
+        List<string> ServiceAndFacilitiesCn = new List<string>();
 
         global::ToGo.ToGoEntities dbContext2 = new ToGo.ToGoEntities();
 
-        private void Form2_Load(object sender, EventArgs e)
+        //加入hotel服務與設施，serviceID以"1"開頭
+        private void Form2_Load(object sender, EventArgs e) 
         {
             var q = from f in dbContext2.ServiceAndFacilities
                     where f.ServiceFacilityID.ToString().StartsWith("1")
                     select f;
-
-            //CheckedListBox CLB = new CheckedListBox();
 
             foreach (var group in q)
             {
@@ -34,10 +42,35 @@ namespace ToGo
                 // CLB.Items.Add(group.ServiceFacilityID);
             }
 
+            //比對各項服務與設施 如果和集合ServiceAndFacilitiesCn裡面的質相同 就將她的Checked屬性改成true
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                for (int j = 0; j < ServiceAndFacilitiesCn.Count; j++)
+                {
+                    if (checkedListBox1.Items[i].ToString()==ServiceAndFacilitiesCn[j])
+                    {
+                        this.checkedListBox2.Items.Add(checkedListBox1.Items[i]);
+                        //((CheckBox)checkedListBox1.Items[i]).Checked = true;
+                        this.checkedListBox1.SetItemChecked(i,true);
+                        
+                        
+                        //CheckBox c = new CheckBox();
+                        //c.Text = checkedListBox1.Items[i].ToString();
+                        //c.Checked = true;
+                        //checkedListBox1.Items.Add(c);
+                    }
+                }
+            }
+            for(int k=0;k<checkedListBox2.Items.Count;k++)
+            {
+                this.checkedListBox2.SetItemChecked(k, true);
+            }
+
         }
 
         List<string> StrServiceAndFacilities = new List<string>();
         List<int> IntServiceID = new List<int>();
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -67,7 +100,8 @@ namespace ToGo
                 this.dbContext2.HotelServiceAndFacilities.Local.Add(new HotelServiceAndFacility
                 {
                     ServiceFacilityID = IntServiceID[i],
-                    HotelID = 2 //判斷Owner的HotelID
+                    //HotelID=
+                    HotelID = Owner_Manager._hotelID //判斷Owner的HotelID
 
                 });
                 this.dbContext2.SaveChanges();

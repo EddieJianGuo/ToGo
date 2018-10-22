@@ -42,6 +42,7 @@ namespace ToGo
         int x, y, z;
         string dpstar = "";
 
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dbContext.Hotels.ToList();
@@ -56,10 +57,10 @@ namespace ToGo
             // roomInformationViewSource.Source = [泛用資料來源]
             System.Windows.Data.CollectionViewSource orderViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("orderViewSource")));
 
+            //hotelViewSource.Source = dbContext.Hotels.Where(x => x.Owner.OwnerID==1).ToList();
             hotelViewSource.Source = dbContext.Hotels.Where(x => x.Owner.Email == MainWindow.OwnerLoginEmail).ToList();
             roomInformationViewSource.Source = dbContext.RoomInformations.Where(x => x.Hotel.Owner.Email == MainWindow.OwnerLoginEmail).ToList();
             orderViewSource.Source = dbContext.Orders.Where(x => x.Hotel.Owner.Email == MainWindow.OwnerLoginEmail).ToList();
-            //cityENNameBox.ItemsSource = dbContext.Cities.Local;
 
         }
 
@@ -235,12 +236,26 @@ namespace ToGo
             r.Show();
         }
 
-        private void Button_Click_9(object sender, RoutedEventArgs e)
+        //新增飯店服務和設施，帶入選中的_hotelID，顯示某個hotelID具備的服務和設施
+        private void Button_Click_9(object sender, RoutedEventArgs e) 
         {
-            Hotel_Service f = new Hotel_Service();
+            Hotel_Service f = new Hotel_Service(Owner_Manager._hotelID);
             f.Show();
+            //var q=this.hotelDataGrid.SelectedItem
         }
         #endregion
+
+        //加入一個靜態變數 用來存放HotelID
+        public static int _hotelID;
+
+        private void hotelDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (hotelIDLabel.Content != null)
+            {
+                _hotelID = int.Parse(hotelIDLabel.Content.ToString());
+            }
+            
+        }
 
         int countryID;
         private void countryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -249,5 +264,7 @@ namespace ToGo
             countryID = country.CountryID;            
         }
 
+       //int chooseHotelID = int.Parse(hotelIDLabel.Content.ToString());
+        
     }
 }
