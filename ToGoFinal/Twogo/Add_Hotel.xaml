@@ -17,16 +17,16 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource hotelViewSource}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="419*"/>
-            <ColumnDefinition Width="430*"/>
+            <ColumnDefinition Width="165*"/>
+            <ColumnDefinition Width="118*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="49*"/>
             <RowDefinition Height="573*"/>
         </Grid.RowDefinitions>
         <Label Content="加入一筆 Hotel資料" HorizontalAlignment="Left" Height="37" Margin="26,8,0,0" VerticalAlignment="Top" Width="207" FontSize="18" FontFamily="Arial Black" Foreground="#FF229E93"/>
-        <Button BorderThickness="3" Background="{StaticResource brush1}" Content="確定加入資料" Margin="26,541,239,43" RenderTransformOrigin="4.028,0.316" Click="Button_Click" Grid.Row="1"  />
-        <DataGrid x:Name="hotelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="20,83,19,324" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Column="1">
+        <Button BorderThickness="3" Background="{StaticResource brush1}" Content="確定加入資料" Margin="26,522,343,43" RenderTransformOrigin="4.028,0.316" Click="Button_Click" Grid.Row="1"  />
+        <DataGrid x:Name="hotelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,83,10,324" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="addressCHColumn" Binding="{Binding AddressCH}" Header="Address CH" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="addressENColumn" Binding="{Binding AddressEN}" Header="Address EN" Width="SizeToHeader"/>
@@ -48,7 +48,7 @@
                 <DataGridTextColumn x:Name="taxIDNumberColumn" Binding="{Binding TaxIDNumber}" Header="Tax IDNumber" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="26,21,0,0" Grid.Row="1" VerticalAlignment="Top" Height="494" Width="375">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="26,21,0,0" Grid.Row="1" VerticalAlignment="Top" Height="494" Width="459">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="154"/>
                 <ColumnDefinition Width="Auto" MinWidth="181"/>
@@ -69,19 +69,19 @@
                 <RowDefinition Height="78"/>
             </Grid.RowDefinitions>
             <Label Content="Chinese Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="0" VerticalAlignment="Center" Height="24" Width="106"/>
-            <TextBox x:Name="adrCHTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,7" Grid.Row="0" Text="{Binding AddressCH, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="English Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="102"/>
-            <TextBox x:Name="adrENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,0,4" Grid.Row="1" Text="{Binding AddressEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="adrCHTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-107,7" Grid.Row="0" Text="{Binding AddressCH, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
+            <Label Content="English Address: *" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="1" VerticalAlignment="Center" Height="24" Width="111"/>
+            <TextBox x:Name="adrENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,-106,4" Grid.Row="1" Text="{Binding AddressEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
             <Label Content="Hotel Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="2" VerticalAlignment="Center" Height="24" Width="111"/>
-            <TextBox x:Name="desTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,7" Grid.Row="2" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="desTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-105,7" Grid.Row="2" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
             <Label Content="Hotel ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="3" VerticalAlignment="Center" Height="24" Width="59"/>
-            <Label x:Name="hotelIDLabel" Content="{Binding HotelID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="3" VerticalAlignment="Center" Height="24" Width="17"/>
+            <Label x:Name="hotelIDLabel" Content="{Binding HotelID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="3" VerticalAlignment="Center" Height="24" Width="76"/>
             <Label Content="Hotel ChineseName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="4" VerticalAlignment="Center" Height="24" Width="131"/>
-            <TextBox x:Name="hnCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,7" Grid.Row="4" Text="{Binding HotelNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Hotel EnglishName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="5" VerticalAlignment="Center" Height="24" Width="100"/>
-            <TextBox x:Name="hnENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,0,4" Grid.Row="5" Text="{Binding HotelNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="hnCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-104,7" Grid.Row="4" Text="{Binding HotelNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
+            <Label Content="Hotel EnglishName: *" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="5" VerticalAlignment="Center" Height="24" Width="131"/>
+            <TextBox x:Name="hnENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,7,-103,4" Grid.Row="5" Text="{Binding HotelNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="291"/>
             <Label Content="Owner ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,7" Grid.Row="6" VerticalAlignment="Center" Height="24" Width="66"/>
-            <Label x:Name="ownerIDLabel" Content="{Binding OwnerID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,12,0,13" Grid.Row="6" VerticalAlignment="Center" Height="10" Width="10"/>
+            <Label x:Name="ownerIDLabel" Content="{Binding OwnerID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,7" Grid.Row="6" VerticalAlignment="Center" Height="21" Width="76"/>
             <Label Content="Register Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="7" VerticalAlignment="Center" Height="24" Width="89"/>
             <Label x:Name="rgDateLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,4" Grid.Row="7" VerticalAlignment="Center" Height="24" Width="169"/>
             <Label Content="Star Rated:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,6" Grid.Row="8" VerticalAlignment="Center" Height="24" Width="71"/>
@@ -93,9 +93,9 @@
             <Label Content="Image:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,42" Grid.Row="12" VerticalAlignment="Center" Height="26" Width="48"/>
             <Image x:Name="imageImage" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,42" Grid.Row="11" Source="{Binding HotelImage.Image}" VerticalAlignment="Center" Height="54" Width="83" Grid.RowSpan="2"/>
             <ComboBox x:Name="cityENComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,7,0,0" Grid.Row="11" VerticalAlignment="Top" Width="120" SelectionChanged="cityENComboBox_SelectionChanged"/>
-            <ComboBox x:Name="countryENComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,10,0,0" Grid.Row="10" VerticalAlignment="Top" Width="120" SelectionChanged="countryENComboBox_SelectionChanged"/>
+            <ComboBox x:Name="countryENComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,10,0,3" Grid.Row="10" Width="120" SelectionChanged="countryENComboBox_SelectionChanged"/>
         </Grid>
-        <Label Content="新加入的資料:" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="20,52,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105"/>
+        <Label Content="新加入的資料:" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="10,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105"/>
 
     </Grid>
 </Window>
