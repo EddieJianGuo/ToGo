@@ -63,41 +63,41 @@
                         <Button BorderThickness="3" Background="{StaticResource brush1}" Content="刪除飯店" Margin="3"  Width="84" Height="40" RenderTransformOrigin="4.028,0.316" Click="Button_Click_2" />
                         <Button BorderThickness="3" Background="{StaticResource brush1}" Content="加入飯店照片"  Margin="3"  Width="99" Height="40" RenderTransformOrigin="4.028,0.316" Click="Button_Click_3" />
                     </StackPanel>
-                    <Viewbox Grid.Column="2" Margin="2" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2">
-                        <ScrollViewer Margin="2" Height="505" Width="434" VerticalAlignment="Top">
-                            <DataGrid x:Name="hotelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="200" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Width="400" VerticalAlignment="Top">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="addressCHColumn" Binding="{Binding AddressCH}" Header="Address CH" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="addressENColumn" Binding="{Binding AddressEN}" Header="Address EN" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="cityIDColumn" Binding="{Binding CityID}" Header="City ID" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="countryIDColumn" Binding="{Binding CountryID}" Header="Country ID" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="hotelIDColumn" Binding="{Binding HotelID}" Header="Hotel ID" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="hotelNameCNColumn" Binding="{Binding HotelNameCN}" Header="Hotel Name CN" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="hotelNameENColumn" Binding="{Binding HotelNameEN}" Header="Hotel Name EN" Width="SizeToHeader"/>
-                                    <DataGridTemplateColumn x:Name="ownerIDColumn" Header="Owner ID" Width="SizeToHeader">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Label Content="{Binding OwnerID}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn x:Name="registerDateColumn" Header="Register Date" Width="SizeToHeader">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Label Content="{Binding RegisterDate}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="starRatedColumn" Binding="{Binding StarRated}" Header="Star Rated" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="taxIDNumberColumn" Binding="{Binding TaxIDNumber}" Header="Tax IDNumber" Width="SizeToHeader"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </ScrollViewer>
-                    </Viewbox>
+                    <DataGrid Grid.Column="2" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" x:Name="hotelDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="354" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="addressCHColumn" Binding="{Binding AddressCH}" Header="Address CH" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="addressENColumn" Binding="{Binding AddressEN}" Header="Address EN" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="hotelIDColumn" Header="Hotel ID" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding HotelID}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="hotelNameCNColumn" Binding="{Binding HotelNameCN}" Header="Hotel Name CN" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="hotelNameENColumn" Binding="{Binding HotelNameEN}" Header="Hotel Name EN" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="ownerIDColumn" Header="Owner ID" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding OwnerID}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="registerDateColumn" Header="Register Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding RegisterDate}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="starRatedColumn" Binding="{Binding StarRated}" Header="Star Rated" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="taxIDNumberColumn" Binding="{Binding TaxIDNumber}" Header="Tax IDNumber" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Margin="8,3,3,6" RenderTransformOrigin="0.5,0.5" Grid.Row="1"/>
                     <Label Content="飯店資料查詢更新" Margin="10,14,248,22" Grid.Column="2" BorderBrush="#FF48E1F9" FontSize="16" FontFamily="Candara" FontStyle="Italic" FontWeight="Bold" Foreground="#FFBDBD03"/>
-                    <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="49,23,0,0" Grid.Row="1" VerticalAlignment="Top" Height="567" Width="377">
+                    <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="489" Width="430">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -116,57 +116,45 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="Address CH:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="addressCHTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding AddressCH, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                         <Label Content="Address EN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                         <TextBox x:Name="addressENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddressEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="City ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                        <TextBox x:Name="cityIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding CityID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Country ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                        <TextBox x:Name="countryIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding CountryID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                        <TextBox x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Hotel ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-                        <TextBox x:Name="hotelIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HotelID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Hotel Name CN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-                        <TextBox x:Name="hotelNameCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding HotelNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Hotel Name EN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
-                        <TextBox x:Name="hotelNameENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding HotelNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Owner ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
-                        <Label x:Name="ownerIDLabel" Content="{Binding OwnerID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
-                        <Label Content="Register Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-                        <Label x:Name="registerDateLabel" Content="{Binding RegisterDate}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-                        <Label Content="Star Rated:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
-                        <TextBox x:Name="starRatedTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding StarRated, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Tax IDNumber:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
-                        <TextBox x:Name="taxIDNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="11" Text="{Binding TaxIDNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="City ENName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="12" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="cityENNameComboBox" Grid.Column="1" DisplayMemberPath="City.CityENName" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="12" VerticalAlignment="Center" Width="120">
+                        <Label Content="Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Hotel ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <Label x:Name="hotelIDLabel" Content="{Binding HotelID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <Label Content="Hotel Name CN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="hotelNameCNTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding HotelNameCN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Hotel Name EN:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="hotelNameENTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HotelNameEN, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Owner ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <Label x:Name="ownerIDLabel" Content="{Binding OwnerID}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <Label Content="Register Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+                        <Label x:Name="registerDateLabel" Content="{Binding RegisterDate}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+                        <Label Content="Star Rated:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+                        <TextBox x:Name="starRatedTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding StarRated, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Tax IDNumber:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+                        <TextBox x:Name="taxIDNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding TaxIDNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="City ENName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="countryComboBox" Grid.Column="1" DisplayMemberPath="City.CityENName" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3,6,0,6" Grid.Row="10" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
                                 </ItemsPanelTemplate>
                             </ComboBox.ItemsPanel>
                         </ComboBox>
-                        <Label Content="Country ENName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="countryComboBox" Grid.Column="1" DisplayMemberPath="Country.CountryENName" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="13" VerticalAlignment="Center" Width="120">
+                        <Label Content="Country ENName:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="countryENNameComboBox" Grid.Column="1" DisplayMemberPath="Country.CountryENName" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="11" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
                                 </ItemsPanelTemplate>
                             </ComboBox.ItemsPanel>
                         </ComboBox>
-                        <Label Content="Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="14" VerticalAlignment="Center"/>
-                        <TextBox x:Name="descriptionTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="14" Text="{Binding HotelImage.Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Hotel ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="15" VerticalAlignment="Center"/>
-                        <TextBox x:Name="hotelIDTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="15" Text="{Binding HotelImage.HotelID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Image:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="16" VerticalAlignment="Center"/>
-                        <Image x:Name="imageImage" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="16" Source="{Binding HotelImage.Image}" VerticalAlignment="Center"/>
+                        <Label Content="Image:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="12" VerticalAlignment="Center"/>
+                        <Image x:Name="imageImage" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="12" Source="{Binding HotelImage.Image}" VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </TabItem>

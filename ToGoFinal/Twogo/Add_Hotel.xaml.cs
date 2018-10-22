@@ -35,8 +35,6 @@ namespace ToGo
             // hotelViewSource.Source = [泛用資料來源]
             hotelViewSource.Source = dbContext.Hotels.Local;
 
-            //this.cityENNameComboBox.ItemsSource = this.dbContext.Countries.ToList();
-
             var q = dbContext.Countries.Select (c =>c.CountryENName).ToList();
             for (int i = 0; i < q.Count; i++)
             {
@@ -46,29 +44,48 @@ namespace ToGo
         }
         int countryno = 0;
         int cityno =0;
-        internal void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //新增一筆hotel
         {
             //Owner輸入資料後, 確定加入資料庫
 
-            //this.countryComboBox1.ItemsSource = this.dbContext.Countries.ToList();
+            if (hnENTextBox.Text is null)
+            {
+                MessageBox.Show("請輸入飯店英文名稱");
+                return;
+            }
 
-            //var country = dbContext.Countries.Where(c => c.CountryENName == ctryname).Select(ci => ci.CountryID).ToList();
+            if (adrENTextBox.Text is null)
+            {
+                MessageBox.Show("請輸入飯店英文地址");
+                return;
+            }
 
-            //var cityname = dbContext.Cities.Where(ci => ci.CountryID == ctryID).Select(ci => ci.CityENName);
-      
+            string StarRate = starTextBox.Text;
+            int rate;
+            if(int.TryParse(StarRate,out rate)==false)
+            {
+                MessageBox.Show("請輸入1~5的數字");
+                return;
+            }
+
+            var q = this.dbContext.Hotels.Where(x => x.Owner.Email == MainWindow.OwnerLoginEmail).Select(x => x.OwnerID);
+            foreach (var item in q)
+            {
+                ownerIDLabel.Content = item;
+            }
 
             this.dbContext.Hotels.Local.Add(new ToGo.Hotel
             {
                 //**TODO:輸入StarRated字串不正確, 跳出提示
-
-                //HotelNameCN = hnCNTextBox.Text,
-                //HotelNameEN = hnENTextBox.Text,
-                //AddressCH = adrCHTextBox.Text,
-                //AddressEN = adrENTextBox.Text,
-                //RegisterDate =  DateTime.Now,
-                //StarRated = int.Parse (starTextBox.Text),
-                //TaxIDNumber =taxIDTextBox.Text,
-                //Description = desTextBox.Text,
+                OwnerID = int.Parse(ownerIDLabel.Content.ToString()),
+                HotelNameCN = hnCNTextBox.Text,
+                HotelNameEN = hnENTextBox.Text,
+                AddressCH = adrCHTextBox.Text,
+                AddressEN = adrENTextBox.Text,
+                RegisterDate = DateTime.Now,
+                StarRated = int.Parse(starTextBox.Text),
+                TaxIDNumber = taxIDTextBox.Text,
+                Description = desTextBox.Text,
                 CountryID =countryno,
                 CityID = cityno
 
