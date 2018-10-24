@@ -111,20 +111,21 @@ namespace ToGo
                 //把TextBox換成ComboBox
                 _RoomType = int.Parse(TxtRoomType.Text);
 
+                Hotel_Search ww = new Hotel_Search();
                 using (SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=ToGo;Integrated Security=True"))
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = conn;
 
-                        cmd.CommandText = "select  r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID,min(r1.UnitPrice) from V_Room r1 where r1.CityCHName=@CityCHName and  not exists (select 1 from( select r.CityCHName,r.HotelID, r.RoomID from V_Room r left join v_order o on r.HotelID= o.HotelID and r.RoomID=o.RoomID where r.CityCHName=@CityCHName and r.RoomType=@RoomType and  @SearchStartDate  between ISNULL( o.StartDate, '2099-11-05') and ISNULL( dateadd( day,-1,o.EndDate),'2099-11-05')or  @SearchEndDate   between ISNULL( o.StartDate, '2099-11-05') and ISNULL(  o.EndDate,'2099-11-05')or o.StartDate between @SearchStartDate and @SearchEndDate or DATEADD(day,-1 ,o.EndDate) between @SearchStartDate and @SearchEndDate) r2 where r1.CityCHName =r2.CityCHName and r1.HotelID =r2.HotelID and r1.RoomID  =r2.RoomID)group by r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID";
+                        cmd.CommandText = "(select  r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID,min(r1.UnitPrice) from V_Room r1 where r1.CityCHName=@CityCHName and r1.specialprice > 0 and  not exists (select 1 from( select r.CityCHName,r.HotelID, r.RoomID from V_Room r left join v_order o on r.HotelID= o.HotelID and r.RoomID=o.RoomID where r.CityCHName=@CityCHName and r.RoomType=@RoomType and  @SearchStartDate  between ISNULL( o.StartDate, '2099-11-05') and ISNULL( dateadd( day,-1,o.EndDate),'2099-11-05')or  @SearchEndDate   between ISNULL( o.StartDate, '2099-11-05') and ISNULL(  o.EndDate,'2099-11-05')or o.StartDate between @SearchStartDate and @SearchEndDate or DATEADD(day,-1 ,o.EndDate) between @SearchStartDate and @SearchEndDate) r2 where r1.CityCHName =r2.CityCHName and r1.HotelID =r2.HotelID and r1.RoomID  =r2.RoomID)group by r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID,r1.specialprice)order by r1.specialprice desc";
                         cmd.Parameters.Add("@RoomType", SqlDbType.Int).Value = _RoomType;
                         cmd.Parameters.Add("@CityCHName", SqlDbType.NVarChar).Value = _City;
                         cmd.Parameters.Add("@SearchStartDate", SqlDbType.Date).Value = _StartDate;
                         cmd.Parameters.Add("@SearchEndDate", SqlDbType.Date).Value = _EndDate;
 
                         conn.Open();
-                        Hotel_Search ww = new Hotel_Search();
+                        
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
                             int a = 0;//搜尋出的資料筆數
@@ -140,7 +141,41 @@ namespace ToGo
                             }
                             ww.Label_HotelCount.Content = a;
                         }
-                        this.Close();
+                        //this.Close();
+                        ww.Show();
+                    }
+                }
+
+                using (SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=ToGo;Integrated Security=True"))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+
+                        cmd.CommandText = "(select  r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID,min(r1.UnitPrice) from V_Room r1 where r1.CityCHName=@CityCHName and r1.specialprice = 0 and  not exists (select 1 from( select r.CityCHName,r.HotelID, r.RoomID from V_Room r left join v_order o on r.HotelID= o.HotelID and r.RoomID=o.RoomID where r.CityCHName=@CityCHName and r.RoomType=@RoomType and  @SearchStartDate  between ISNULL( o.StartDate, '2099-11-05') and ISNULL( dateadd( day,-1,o.EndDate),'2099-11-05')or  @SearchEndDate   between ISNULL( o.StartDate, '2099-11-05') and ISNULL(  o.EndDate,'2099-11-05')or o.StartDate between @SearchStartDate and @SearchEndDate or DATEADD(day,-1 ,o.EndDate) between @SearchStartDate and @SearchEndDate) r2 where r1.CityCHName =r2.CityCHName and r1.HotelID =r2.HotelID and r1.RoomID  =r2.RoomID)group by r1.CityCHName,r1.HotelNameCN,r1.GoogleMapUri,r1.HotelID)order by min(r1.UnitPrice)";
+                        cmd.Parameters.Add("@RoomType", SqlDbType.Int).Value = _RoomType;
+                        cmd.Parameters.Add("@CityCHName", SqlDbType.NVarChar).Value = _City;
+                        cmd.Parameters.Add("@SearchStartDate", SqlDbType.Date).Value = _StartDate;
+                        cmd.Parameters.Add("@SearchEndDate", SqlDbType.Date).Value = _EndDate;
+
+                        conn.Open();
+                        
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            int a = 0;//搜尋出的資料筆數
+                            while (dr.Read())
+                            {
+                                Window_HotelButton xx = new Window_HotelButton((int)dr["HotelID"]); //利用建構子方法 把HotelID 帶入                                
+                                xx.City = dr["CityCHName"];//CityCHName
+                                xx.DESC = dr["HotelNameCN"];//HotelNameCN
+                                xx.TempUrl = dr["GoogleMapUri"].ToString(); //URL
+                                xx.price = dr[4];//UnitPrice                                
+                                ww.StackPanel_ShowHotel.Children.Add(xx);
+                                a++;
+                            }
+                            ww.Label_HotelCount.Content = a;
+                        }
+                        //this.Close();
                         ww.Show();
                     }
                 }
@@ -175,7 +210,7 @@ namespace ToGo
                 if (string.IsNullOrEmpty(cmb.Text)) return false;
                 else
                 {
-                    if (((string)o).StartsWith(cmb.Text)) return true;
+                    if (((string)o).Contains(cmb.Text)) return true;
                     else return false;
                 }
             });
@@ -184,5 +219,6 @@ namespace ToGo
             itemsViewOriginal.Refresh();
 
         }
+
     }
 }
